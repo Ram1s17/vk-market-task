@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite"
 
 import ProductService from "./services/ProductService"
 import { Context } from "./context/context"
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner"
 
 const App: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -35,7 +36,15 @@ const App: FC = () => {
 
   return (
     <>
-      <div>{isLoading ? 'Loading...' : (error ? error : JSON.stringify(cartStore.cart))}</div>
+      {
+        isLoading
+          ? <LoadingSpinner />
+          : (
+            error
+              ? <div className="error-text text-align-center">{error}</div>
+              : <div>{JSON.stringify(cartStore.cart)}</div>
+          )
+      }
     </>
   )
 }
