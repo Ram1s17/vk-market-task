@@ -1,9 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .text-align-center {
     text-align: center;
+}
+
+.cursor-default {
+    cursor: default !important;
+}
+
+.color-red {
+    color: red !important;
 }
 
 .error-text {
     color: red;
     font-size: 20px;
     font-weight: bold;
+}
+
+.app-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.products-panel {
+    padding: 10px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.product-card {
+    margin-bottom: 10px;
+}
+
+.product-card .ant-card-cover {
+    display: flex;
+    justify-content: center;
+}
+
+.product-card .ant-card-cover img {
+    width: 150px !important;
+    margin-top: 10px;
 }
