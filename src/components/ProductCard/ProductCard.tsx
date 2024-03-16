@@ -1,15 +1,19 @@
-import { FC } from "react"
+import { FC, useContext } from "react"
 import { Card } from "antd"
 import { DeleteOutlined, MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons"
+import { observer } from "mobx-react-lite"
 
 import { Product } from "../../types/types"
+import { Context } from "../../context/context"
 
 
 interface ProductCardProps extends Product {
     count: number;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ image, title, description, price, count }) => {
+const ProductCard: FC<ProductCardProps> = ({ id, image, title, description, price, count }) => {
+    const { cartStore } = useContext(Context);
+
     return (
         <Card
             className="product-card"
@@ -20,11 +24,27 @@ const ProductCard: FC<ProductCardProps> = ({ image, title, description, price, c
                 />
             }
             actions={[
-                <MinusCircleOutlined className={count === 1 ? 'cursor-default color-red' : ''} />,
-                <div className="cursor-default">{count}</div>,
-                <PlusCircleOutlined className={count === 10 ? 'cursor-default color-red' : ''} />,
-                <div className="cursor-default">Price: {price}</div>,
-                <DeleteOutlined />
+                <MinusCircleOutlined
+                    className={count === 1 ? 'cursor-default color-red' : ''}
+                    onClick={() => cartStore.decreaseProductCount(id)}
+                />,
+                <div
+                    className="cursor-default"
+                >
+                    {count}
+                </div>,
+                <PlusCircleOutlined
+                    className={count === 10 ? 'cursor-default color-red' : ''}
+                    onClick={() => cartStore.increaseProductCount(id)}
+                />,
+                <div
+                    className="cursor-default"
+                >
+                    Price: {price}
+                </div>,
+                <DeleteOutlined
+                    onClick={() => cartStore.deleteProduct(id)}
+                />
             ]}
         >
             <Card.Meta
@@ -35,4 +55,4 @@ const ProductCard: FC<ProductCardProps> = ({ image, title, description, price, c
     )
 }
 
-export default ProductCard
+export default observer(ProductCard)

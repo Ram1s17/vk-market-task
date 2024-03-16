@@ -1,5 +1,6 @@
 import { FC, useContext } from "react"
 import { Empty } from "antd"
+import { observer } from "mobx-react-lite"
 
 import { Context } from "../../context/context"
 import ProductList from "../ProductList/ProductList"
@@ -17,4 +18,4 @@ const ProductsPanel: FC = () => {
     )
 }
 
-export default ProductsPanel
+export default observer(ProductsPanel)

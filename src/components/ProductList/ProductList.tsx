@@ -1,4 +1,5 @@
 import { FC, useContext } from "react"
+import { observer } from "mobx-react-lite"
 
 import { Context } from "../../context/context"
 import ProductCard from "../ProductCard/ProductCard"
@@ -19,4 +20,4 @@ const ProductList: FC = () => {
     )
 }
 
-export default ProductList
+export default observer(ProductList)

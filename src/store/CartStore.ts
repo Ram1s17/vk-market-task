@@ -24,6 +24,30 @@ class CartStore {
             })
         }
     }
+
+    increaseProductCount(productId: number) {
+        const existingItem = this.cart.find(item => item.product.id === productId)
+
+        if (existingItem && existingItem.count < 10) {
+            existingItem.count++
+        }
+    }
+
+    decreaseProductCount(productId: number) {
+        const existingItem = this.cart.find(item => item.product.id === productId)
+
+        if (existingItem && existingItem.count > 1) {
+            existingItem.count--
+        }
+    }
+
+    deleteProduct(productId: number) {
+        const existingItemIndex = this.cart.findIndex(item => item.product.id === productId)
+
+        if (existingItemIndex !== -1) {
+            this.cart.splice(existingItemIndex, 1)
+        }
+    }
 }
 
 export default CartStore
