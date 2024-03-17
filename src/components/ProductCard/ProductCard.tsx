@@ -28,19 +28,15 @@ const ProductCard: FC<ProductCardProps> = ({ id, image, title, description, pric
                     className={count === 1 ? 'cursor-default color-red' : ''}
                     onClick={() => cartStore.decreaseProductCount(id)}
                 />,
-                <div
-                    className="cursor-default"
-                >
+                <div className="cursor-default">
                     {count}
                 </div>,
                 <PlusCircleOutlined
                     className={count === 10 ? 'cursor-default color-red' : ''}
                     onClick={() => cartStore.increaseProductCount(id)}
                 />,
-                <div
-                    className="cursor-default"
-                >
-                    Price: {price}
+                <div className="cursor-default">
+                    Price: {price} RUB
                 </div>,
                 <DeleteOutlined
                     onClick={() => cartStore.deleteProduct(id)}

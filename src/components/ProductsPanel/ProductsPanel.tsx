@@ -9,10 +9,15 @@ const ProductsPanel: FC = () => {
     const { cartStore } = useContext(Context)
 
     return (
-        <div className="products-panel">
+        <div className={`panel ${cartStore.cart.length === 0 ? 'empry-panel' : ''}`}>
             {cartStore.cart.length > 0
                 ? <ProductList />
-                : <Empty />
+                : <Empty
+                    description={
+                        <span>
+                            The list of products is empty
+                        </span>
+                    } />
             }
         </div>
     )

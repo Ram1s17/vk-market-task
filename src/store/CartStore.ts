@@ -14,6 +14,11 @@ class CartStore {
         makeAutoObservable(this)
     }
 
+    get totalPrice(): number {
+        const total = this.cart.reduce((total, current) => total + (current.product.price * current.count), 0)
+        return Number(total.toFixed(3))
+    }
+
     addProduct(newProduct: Product) {
         const existingItemIndex = this.cart.findIndex(item => item.product.id === newProduct.id)
 

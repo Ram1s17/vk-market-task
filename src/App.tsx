@@ -5,6 +5,7 @@ import ProductService from "./services/ProductService"
 import { Context } from "./context/context"
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner"
 import ProductsPanel from "./components/ProductsPanel/ProductsPanel"
+import SummaryPanel from "./components/SummaryPanel/SummaryPanel"
 
 const App: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -43,9 +44,12 @@ const App: FC = () => {
           : (
             error
               ? <div className="error-text text-align-center">{error}</div>
-              : <div className="app-container">
+              :
+              <div className="app-container">
                 <ProductsPanel />
-                <div />
+                <div>
+                  <SummaryPanel />
+                </div>
               </div>
           )
       }
