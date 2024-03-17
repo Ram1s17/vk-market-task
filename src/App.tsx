@@ -47,7 +47,7 @@ const App: FC = () => {
               :
               <div className="app-container">
                 <ProductsPanel />
-                <div>
+                <div className="summary-panel-wrapper">
                   <SummaryPanel />
                 </div>
               </div>
