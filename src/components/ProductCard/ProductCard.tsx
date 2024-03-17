@@ -12,7 +12,7 @@ interface ProductCardProps extends Product {
 }
 
 const ProductCard: FC<ProductCardProps> = ({ id, image, title, description, price, count }) => {
-    const { cartStore } = useContext(Context);
+    const { cartStore } = useContext(Context)
 
     return (
         <Card

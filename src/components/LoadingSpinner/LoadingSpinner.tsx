@@ -6,7 +6,8 @@ const LoadingSpinner: FC = () => {
         <Spin
             tip="Loading..."
             size="large"
-            fullscreen>
+            fullscreen
+        >
             <div className="content" />
         </Spin>
     )

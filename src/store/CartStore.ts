@@ -2,13 +2,13 @@ import { makeAutoObservable } from "mobx"
 
 import { Product } from "../types/types"
 
-interface CardItem {
+interface CartItem {
     product: Product;
     count: number;
 }
 
 class CartStore {
-    cart: CardItem[] = []
+    cart: CartItem[] = []
 
     constructor() {
         makeAutoObservable(this)
